@@ -5,7 +5,7 @@ var multer = require('multer');
 
 //- set multer
 router.use(multer({
-    dest: './uploads/',
+    dest: './public/uploads/',
     rename: function(fieldname, filename) {
         return filename + Date.now();
     },
@@ -21,10 +21,8 @@ router.use(multer({
 router.post('/new', function(req, res) {
     if (done == true) {
         console.log(req.files);
-        //res.status(204);
-        res.json({
-            status: "File uploaded."
-        });
+        console.log(req.files.userPhoto.path);
+        res.json({ path: req.files.userPhoto.path.replace(/public\//g, '') });
     }
 });
 

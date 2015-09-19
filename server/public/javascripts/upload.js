@@ -9,6 +9,8 @@ $(document).ready(function() {
             },
             success: function(response) {
                 console.log(response);
+                $('#show').attr('src', response.path)
+                return false;
             }
         });
         return false;
